@@ -51,13 +51,13 @@ android {
         }
     }
 
-    buildTypes {
+        buildTypes {
         debug {
-            signingConfig = signingConfigs.getByName("release")
+            // ✨ 這裡刪除了簽名設定，會自動套用免密碼的預設測試金鑰
         }
         release {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("release")
+            // ✨ 這裡也刪除了簽名設定
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
