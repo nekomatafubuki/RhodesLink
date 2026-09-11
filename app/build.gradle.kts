@@ -51,18 +51,19 @@ android {
         }
     }
 
-        buildTypes {
-        debug {
-            // ✨ 這裡刪除了簽名設定，會自動套用免密碼的預設測試金鑰
-        }
-        release {
-            isMinifyEnabled = false
-            // ✨ 這裡也刪除了簽名設定
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+       buildTypes {
+    debug {
+        signingConfig = signingConfigs.getByName("debug") // 
+    }
+    release {
+        isMinifyEnabled = false
+        signingConfig = signingConfigs.getByName("debug") // 
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
+    }
+}
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
